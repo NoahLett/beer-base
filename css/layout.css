@@ -24,7 +24,7 @@
 }
 
 .column-seventh {
-  width: calc(100% / 7);
+  width: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,6 +62,13 @@
 
   .column-half {
     width: 50%;
+  }
+
+  .column-seventh {
+    width: calc(100% / 7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .column-two-sevenths {
