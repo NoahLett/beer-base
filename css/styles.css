@@ -1,0 +1,84 @@
+body {
+  background-color: #e5e5e5;
+}
+
+.header-box {
+  background-color: #d9d9d9;
+  height: 80px;
+}
+
+.main-title {
+  text-decoration: none;
+  font-family: Lobster, sans-serif;
+  font-size: 3rem;
+  color: #f44336;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+}
+
+.recipe-link,
+.feed-link,
+.post-link {
+  text-decoration: none;
+  font-family: Roboto, sans-serif;
+  font-size: 1.25rem;
+  color: #f44336;
+  padding: 0.75rem;
+}
+
+.welcome-text {
+  font-family: Lobster, sans-serif;
+  color: black;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.carousel-box {
+  height: 500px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px black;
+  align-items: center;
+  display: flex;
+}
+
+.fa-chevron-left {
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.fa-chevron-right {
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.carousel-title {
+  font-family: Lobster, sans-serif;
+  font-size: 2rem;
+}
+
+.carousel-text {
+  font-family: Roboto, sans-serif;
+  font-size: 1.45rem;
+  line-height: 2rem;
+}
+
+.carousel-image {
+  height: 20rem;
+  width: 28rem;
+  margin-left: 2rem;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.span-box {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.fa-circle {
+  font-size: 1.25rem;
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
