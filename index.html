@@ -5,14 +5,76 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AJAX Project</title>
   <link rel="icon" href="images/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/705272b3d3.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header>
+  <header class="header-box">
+    <div class="container">
+      <div class="row height">
+        <div class="column-half center">
+          <a href="#" class="main-title">The Brew Base</a>
+        </div>
+        <div class="column-half bottom">
+          <span class="nav-bar">
+            <a href="#" class="recipe-link">Recipes</a>
+            <a href="#" class="feed-link">Feed</a>
+            <a href="#" class="post-link">Post</a>
+          </span>
+        </div>
+      </div>
+    </div>
   </header>
   <main>
+    <div class="view" data-view="home-page">
+      <div class="container">
+        <div class="row">
+          <div class="column-full">
+            <div class="welcome-box">
+              <h1 class="welcome-text">Welcome to The Brew Base!</h1>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-full">
+            <div class="carousel-box">
+              <div class="row">
+                <div class="column-seventh">
+                  <i class="fa-solid fa-chevron-left"></i>
+                </div>
+                <div class="column-two-sevenths">
+                  <div class="carousel-text-box">
+                    <h2 class="carousel-title"></h2>
+                    <p class="carousel-text"></p>
+                  </div>
+                </div>
+                <div class="column-three-sevenths">
+                  <div class="carousel-image-box"><img class="carousel-image" src="" alt="Pictures of Beer"></div>
+                </div>
+                <div class="column-seventh">
+                  <i class="fa-solid fa-chevron-right"></i>
+                </div>
+                <div class="span-box">
+                  <span class="circles-box">
+                    <i class="fa-regular fa-circle"></i>
+                    <i class="fa-regular fa-circle"></i>
+                    <i class="fa-regular fa-circle"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
