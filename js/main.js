@@ -308,27 +308,34 @@ var recipesList = [
 function renderThumbnails(beer) {
   var divColumnSixth = document.createElement('div');
   divColumnSixth.setAttribute('class', 'column-sixth');
+
   var aTag = document.createElement('a');
   aTag.setAttribute('class', 'a-tag');
   divColumnSixth.appendChild(aTag);
+
   var divCard = document.createElement('div');
   divCard.setAttribute('class', 'div-card');
   aTag.appendChild(divCard);
+
   var beerImage = document.createElement('img');
   beerImage.setAttribute('class', 'beer-image');
   beerImage.setAttribute('src', beer.imageUrl);
   divCard.appendChild(beerImage);
+
   var divCardText = document.createElement('div');
   divCardText.setAttribute('class', 'div-card-text');
   divCard.appendChild(divCardText);
+
   var beerName = document.createElement('h2');
   beerName.textContent = beer.name;
   beerName.setAttribute('class', 'beer-name');
   divCardText.appendChild(beerName);
+
   var details = document.createElement('h3');
   details.setAttribute('class', 'details-text');
   details.textContent = 'ABV: ' + beer.abv + ' IBU: ' + beer.ibu;
   divCardText.appendChild(details);
+
   return divColumnSixth;
 }
 
@@ -338,3 +345,27 @@ for (var i = 0; i < recipesList.length; i++) {
   var result = renderThumbnails(recipesList[i]);
   $recipesRow.appendChild(result);
 }
+
+// View Swapping Functionality //
+
+var $view = document.querySelectorAll('.view');
+var $mainTitleLink = document.querySelector('.main-title');
+var $recipeLink = document.querySelector('.recipe-link');
+
+function handleViewSwap(string) {
+  for (var i = 0; i < $view.length; i++) {
+    if ($view[i].getAttribute('data-view') === string) {
+      $view[i].className = 'view';
+    } else {
+      $view[i].className = 'view hidden';
+    }
+  }
+}
+
+$mainTitleLink.addEventListener('click', function () {
+  handleViewSwap(event.target.getAttribute('data-view'));
+});
+
+$recipeLink.addEventListener('click', function () {
+  handleViewSwap(event.target.getAttribute('data-view'));
+});
