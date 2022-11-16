@@ -113,8 +113,8 @@ function handleCarouselSwap3(event) {
   }
 }
 
-// function rotation() {
-//   handleCarouselSwap2();
-// }
+function rotation() {
+  handleCarouselSwap2();
+}
 
-// setInterval(rotation, 5000);
+setInterval(rotation, 5000);

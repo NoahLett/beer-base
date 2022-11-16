@@ -24,18 +24,22 @@
 }
 
 .column-seventh {
-  width: 10%;
+  width: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .column-two-sevenths {
-  width: 100%;
+  width: 90%;
+  display: flex;
+  justify-content: center;
 }
 
 .column-three-sevenths {
-  width: 100%;
+  width: 90%;
+  display: flex;
+  justify-content: center;
 }
 
 .center {

@@ -65,7 +65,7 @@ body {
 
 .carousel-image {
   height: 20rem;
-  width: 28rem;
+  width: 26rem;
   margin-left: 2rem;
   object-fit: cover;
   border-radius: 5px;
@@ -79,17 +79,31 @@ body {
     margin-right: auto;
   }
 
+  .fa-chevron-left,
+  .fa-chevron-right {
+    font-size: 2rem;
+    position: relative;
+  }
+
+  .fa-chevron-left {
+    top: 70%;
+    left: 50%;
+  }
+
+  .fa-chevron-right {
+    bottom: 34%;
+    left: 50%;
+  }
+
   .carousel-title {
     font-size: 1.5rem;
-
-    /* margin-left: 1rem; */
+    text-align: center;
   }
 
   .carousel-text {
     font-size: 1rem;
     line-height: 1.5rem;
-
-    /* margin-left: 1rem; */
+    text-align: center;
   }
 
   .carousel-image {
