@@ -118,3 +118,333 @@ function rotation() {
 }
 
 setInterval(rotation, 5000);
+
+// Recipes "Thumbnail" List Render //
+
+var recipesList = [
+  {
+    name: 'Buzz',
+    imageUrl: 'images/beer-photo-1.webp',
+    id: 1,
+    abv: 4.5,
+    ibu: 60
+  },
+  {
+    name: 'Trashy Blonde',
+    imageUrl: 'images/beer-photo-2.webp',
+    id: 2,
+    abv: 4.1,
+    ibu: 41.5
+  },
+  {
+    name: 'Berliner Weisse',
+    imageUrl: 'images/beer-photo-6.webp',
+    id: 3,
+    abv: 4.2,
+    ibu: 8
+  },
+  {
+    name: 'Pilsen Lager',
+    imageUrl: 'images/beer-photo-3.webp',
+    id: 4,
+    abv: 6.3,
+    ibu: 55
+  },
+  {
+    name: 'Avery Brown Dredge',
+    imageUrl: 'images/beer-photo-9.webp',
+    id: 5,
+    abv: 7.2,
+    ibu: 59
+  },
+  {
+    name: 'Electric India',
+    imageUrl: 'images/beer-photo-7.webp',
+    id: 6,
+    abv: 5.2,
+    ibu: 38
+  },
+  {
+    name: 'AB:12',
+    imageUrl: 'images/beer-photo-5.webp',
+    id: 7,
+    abv: 11.2,
+    ibu: 35
+  },
+  {
+    name: 'Fake Lager',
+    imageUrl: 'images/beer-photo-4.webp',
+    id: 8,
+    abv: 4.7,
+    ibu: 40
+  },
+  {
+    name: 'AB:07',
+    imageUrl: 'images/beer-photo-1.webp',
+    id: 9,
+    abv: 12.5,
+    ibu: 30
+  },
+  {
+    name: 'Bramling X',
+    imageUrl: 'images/beer-photo-6.webp',
+    id: 10,
+    abv: 7.5,
+    ibu: 75
+  },
+  {
+    name: 'Misspent Youth',
+    imageUrl: 'images/beer-photo-2.webp',
+    id: 11,
+    abv: 7.3,
+    ibu: 30
+  },
+  {
+    name: 'Arcade Nation',
+    imageUrl: 'images/beer-photo-8.webp',
+    id: 12,
+    abv: 5.3,
+    ibu: 60
+  },
+  {
+    name: 'Movember',
+    imageUrl: 'images/beer-photo-4.webp',
+    id: 13,
+    abv: 4.5,
+    ibu: 50
+  },
+  {
+    name: 'Alpha Dog',
+    imageUrl: 'images/beer-photo-3.webp',
+    id: 14,
+    abv: 4.5,
+    ibu: 42
+  },
+  {
+    name: 'Mixtape 8',
+    imageUrl: 'images/beer-photo-8.webp',
+    id: 15,
+    abv: 14.5,
+    ibu: 50
+  },
+  {
+    name: 'Libertine Porter',
+    imageUrl: 'images/beer-photo-5.webp',
+    id: 16,
+    abv: 6.1,
+    ibu: 45
+  },
+  {
+    name: 'AB:06',
+    imageUrl: 'images/beer-photo-9.webp',
+    id: 17,
+    abv: 11.2,
+    ibu: 150
+  },
+  {
+    name: 'Russian Doll IPA',
+    imageUrl: 'images/beer-photo-2.webp',
+    id: 18,
+    abv: 6,
+    ibu: 70
+  },
+  {
+    name: 'Hello My Name Is Mette-Marit',
+    imageUrl: 'images/beer-photo-6.webp',
+    id: 19,
+    abv: 8.2,
+    ibu: 70
+  },
+  {
+    name: 'Rabiator',
+    imageUrl: 'images/beer-photo-4.webp',
+    id: 20,
+    abv: 10.27,
+    ibu: 26
+  },
+  {
+    name: 'Vice Bier',
+    imageUrl: 'images/beer-photo-3.webp',
+    id: 21,
+    abv: 4.3,
+    ibu: 25
+  },
+  {
+    name: 'Devine Rebel',
+    imageUrl: 'images/beer-photo-7.webp',
+    id: 22,
+    abv: 12.5,
+    ibu: 100
+  },
+  {
+    name: 'Storm',
+    imageUrl: 'images/beer-photo-4.webp',
+    id: 23,
+    abv: 8,
+    ibu: 60
+  },
+  {
+    name: 'The End Of History',
+    imageUrl: 'images/beer-photo-9.webp',
+    id: 24,
+    abv: 55,
+    ibu: null
+  }
+];
+
+function renderThumbnails(beer) {
+  var divColumnSixth = document.createElement('div');
+  divColumnSixth.setAttribute('class', 'column-sixth');
+
+  var aTag = document.createElement('a');
+  aTag.setAttribute('class', 'a-tag');
+  aTag.setAttribute('data-beer-id', beer.id);
+  aTag.setAttribute('data-view', 'recipe-details');
+  divColumnSixth.appendChild(aTag);
+
+  var divCard = document.createElement('div');
+  divCard.setAttribute('class', 'div-card');
+  aTag.appendChild(divCard);
+
+  var beerImage = document.createElement('img');
+  beerImage.setAttribute('class', 'beer-image');
+  beerImage.setAttribute('src', beer.imageUrl);
+  divCard.appendChild(beerImage);
+
+  var divCardText = document.createElement('div');
+  divCardText.setAttribute('class', 'div-card-text');
+  divCard.appendChild(divCardText);
+
+  var beerName = document.createElement('h2');
+  beerName.textContent = beer.name;
+  beerName.setAttribute('class', 'beer-name');
+  divCardText.appendChild(beerName);
+
+  var details = document.createElement('h3');
+  details.setAttribute('class', 'details-text');
+  details.textContent = 'ABV: ' + beer.abv + ' IBU: ' + beer.ibu;
+  divCardText.appendChild(details);
+
+  return divColumnSixth;
+}
+
+var $recipesRow = document.querySelector('#recipes-row');
+
+for (var i = 0; i < recipesList.length; i++) {
+  var result = renderThumbnails(recipesList[i]);
+  $recipesRow.appendChild(result);
+}
+
+// View Swapping Functionality //
+
+var $view = document.querySelectorAll('.view');
+var $mainTitleLink = document.querySelector('.main-title');
+var $recipeLink = document.querySelector('.recipe-link');
+
+function handleViewSwap(string) {
+  for (var i = 0; i < $view.length; i++) {
+    if ($view[i].getAttribute('data-view') === string) {
+      $view[i].className = 'view';
+    } else {
+      $view[i].className = 'view hidden';
+    }
+  }
+}
+
+$mainTitleLink.addEventListener('click', function () {
+  handleViewSwap(event.target.getAttribute('data-view'));
+});
+
+$recipeLink.addEventListener('click', function () {
+  handleViewSwap(event.target.getAttribute('data-view'));
+});
+
+// Public API XMLHttpRequest Function//
+
+var $recipesBox = document.querySelector('.recipes-box');
+var $beerTitle = document.querySelector('.beer-title');
+var $tagLine = document.querySelector('.tag-line');
+var $description = document.querySelector('.description');
+var $tip = document.querySelector('.tip');
+var $hops = document.querySelector('.hops-list');
+var $malts = document.querySelector('.malts-list');
+var $yeast = document.querySelector('.yeast-list');
+var $fermentation = document.querySelector('.fermentation-list');
+var $mash = document.querySelector('.mash-list');
+var $stats = document.querySelector('.stats-list');
+
+$recipesBox.addEventListener('click', handleRecipeRequest);
+
+var targetUrl = encodeURIComponent('https://api.punkapi.com/v2/beers');
+
+function handleRecipeRequest(event) {
+  if (event.target.closest('a').getAttribute('data-beer-id')) {
+    $hops.textContent = '';
+    $malts.textContent = '';
+    $yeast.textContent = '';
+    $fermentation.textContent = '';
+    $mash.textContent = '';
+    $stats.textContent = '';
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://lfz-cors.herokuapp.com/?url=' + targetUrl);
+    xhr.responseType = 'json';
+    xhr.addEventListener('load', function () {
+      var recipes = xhr.response;
+      for (var i = 0; i < recipes.length; i++) {
+        if (Number(event.target.closest('a').getAttribute('data-beer-id')) === (recipes[i].id)) {
+          $beerTitle.textContent = recipes[i].name;
+          $tagLine.textContent = recipes[i].tagline;
+          $description.textContent = recipes[i].description;
+          $tip.textContent = recipes[i].brewers_tips;
+          for (var x = 0; x < recipes[i].ingredients.hops.length; x++) {
+            var hopsItem = document.createElement('li');
+            hopsItem.textContent = recipes[i].ingredients.hops[x].name + ', ' + recipes[i].ingredients.hops[x].amount.value + ' g, ' + recipes[i].ingredients.hops[x].add;
+            $hops.appendChild(hopsItem);
+          }
+          for (var y = 0; y < recipes[i].ingredients.malt.length; y++) {
+            var maltsItem = document.createElement('li');
+            maltsItem.textContent = recipes[i].ingredients.malt[y].name + ', ' + recipes[i].ingredients.malt[y].amount.value + ' kg';
+            $malts.appendChild(maltsItem);
+          }
+          var yeastItem = document.createElement('li');
+          yeastItem.textContent = recipes[i].ingredients.yeast;
+          $yeast.appendChild(yeastItem);
+
+          var fermentationItem = document.createElement('li');
+          fermentationItem.textContent = recipes[i].method.fermentation.temp.value + ' ' + recipes[i].method.fermentation.temp.unit;
+          $fermentation.appendChild(fermentationItem);
+
+          var mashItem = document.createElement('li');
+          mashItem.textContent = recipes[i].method.mash_temp[0].temp.value + ' ' + recipes[i].method.mash_temp[0].temp.unit + ', ' + recipes[i].method.mash_temp[0].duration + ' mins';
+          $mash.appendChild(mashItem);
+
+          var statsItem1 = document.createElement('li');
+          statsItem1.textContent = 'pH: ' + recipes[i].ph;
+          $stats.appendChild(statsItem1);
+
+          var statsItem2 = document.createElement('li');
+          statsItem2.textContent = 'Boil Volume: ' + recipes[i].boil_volume.value + ' ' + recipes[i].boil_volume.unit;
+          $stats.appendChild(statsItem2);
+
+          var statsItem3 = document.createElement('li');
+          statsItem3.textContent = 'Volume: ' + recipes[i].volume.value + ' ' + recipes[i].volume.unit;
+          $stats.appendChild(statsItem3);
+
+          var statsItem4 = document.createElement('li');
+          statsItem4.textContent = 'IBU: ' + recipes[i].ibu;
+          $stats.appendChild(statsItem4);
+
+          var statsItem5 = document.createElement('li');
+          statsItem5.textContent = 'ABV: ' + recipes[i].abv;
+          $stats.appendChild(statsItem5);
+
+          var statsItem6 = document.createElement('li');
+          statsItem6.textContent = 'EBC: ' + recipes[i].ebc;
+          $stats.appendChild(statsItem6);
+        }
+      }
+    });
+    xhr.send();
+    handleViewSwap('recipe-details');
+  }
+}
