@@ -329,11 +329,35 @@ function renderThumbnails(beer) {
 }
 
 var $recipesRow = document.querySelector('#recipes-row');
+// var $abvOption = document.querySelectorAll('.abv-option');
+// var $filterForm = document.querySelector('.filter-form');
 
 for (var i = 0; i < recipesList.length; i++) {
   var result = renderThumbnails(recipesList[i]);
   $recipesRow.appendChild(result);
 }
+
+// $filterForm.addEventListener('input', checkFilters);
+
+// function checkFilters(event) {
+//   for (var i = 0; i < $abvOption.length; i++) {
+//     if ($abvOption[i].value !== '') {
+//       $recipesRow.textContent = '';
+//       for (var x = 0; x < recipesList.length; x++) {
+//         if (recipesList[x].abv < Number(event.target.value)) {
+//           var result1 = renderThumbnails(recipesList[x]);
+//           $recipesRow.appendChild(result1);
+//         }
+//       }
+//     } else if (event.target.value === '') {
+//       console.log('true');
+//       for (var y = 0; y < recipesList.length; y++) {
+//         var result2 = renderThumbnails(recipesList[y]);
+//         $recipesRow.appendChild(result2);
+//       }
+//     }
+//   }
+// }
 
 // View Swapping Functionality //
 

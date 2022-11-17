@@ -137,6 +137,13 @@
     align-items: flex-end;
   }
 
+  .right {
+    display: flex;
+    justify-content: right;
+    padding-top: 2rem;
+    padding-right: 2rem;
+  }
+
   .a-tag {
     width: 80%;
     cursor: pointer;
