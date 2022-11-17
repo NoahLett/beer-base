@@ -379,6 +379,12 @@ var targetUrl = encodeURIComponent('https://api.punkapi.com/v2/beers');
 
 function handleRecipeRequest(event) {
   if (event.target.closest('a').getAttribute('data-beer-id')) {
+    $hops.textContent = '';
+    $malts.textContent = '';
+    $yeast.textContent = '';
+    $fermentation.textContent = '';
+    $mash.textContent = '';
+    $stats.textContent = '';
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://lfz-cors.herokuapp.com/?url=' + targetUrl);
     xhr.responseType = 'json';
