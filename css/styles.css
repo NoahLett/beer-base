@@ -281,7 +281,7 @@ input[type="file"]::file-selector-button {
 @media screen and (max-width: 767px) {
   .carousel-box {
     width: 90%;
-    height: 575px;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
   }

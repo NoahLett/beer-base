@@ -513,3 +513,44 @@ function handleRecipeRequest(event) {
     handleViewSwap('recipe-details');
   }
 }
+
+// Image Placeholder Function //
+
+var $postPhotoFile = document.querySelector('input.post-photo-file');
+var $newPostImage = document.querySelector('img.new-post-image');
+var $selectedFile = document.getElementById('photo-file');
+
+$postPhotoFile.addEventListener('input', handleFileInput);
+
+function handleFileInput(event) {
+  if ($postPhotoFile.value !== '') {
+    var fileObject = $selectedFile.files[0];
+    var objectURL = window.URL.createObjectURL(fileObject);
+    $newPostImage.setAttribute('src', objectURL);
+  } else {
+    $newPostImage.setAttribute('src', 'images/placeholder-image-square.jpg');
+  }
+}
+
+// Submit Post Function //
+
+// var $postForm = document.querySelector('.new-post-form');
+
+// $postForm.addEventListener('submit', handleSubmit);
+
+// function handleSubmit(event) {
+//   event.preventDefault();
+//   var obj = {};
+//   var $title = document.forms[1].elements.title.value;
+//   var $photoFile = document.forms[1].elements.photoFile.value;
+//   var $comment = document.forms[1].elements.comment.value;
+//   obj.title = $title;
+//   obj.photoFile = $photoFile;
+//   obj.comment = $comment;
+//   obj.postId = data.nextPostId;
+//   document.forms[1].reset();
+//   $newPostImage.setAttribute('src', 'images/placeholder-image-square.jpg');
+//   data.posts.unshift(obj);
+//   data.nextPostId++;
+//   $ul.prepend(renderPost(obj));
+// }
