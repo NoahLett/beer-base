@@ -119,7 +119,7 @@ function rotation() {
 
 setInterval(rotation, 5000);
 
-// Recipes "Thumbnail" List Render //
+// Recipes "Thumbnail" List Render and Filter Functionality //
 
 var recipesList = [
   {
@@ -400,6 +400,7 @@ function lockFilter(event) {
 var $view = document.querySelectorAll('.view');
 var $mainTitleLink = document.querySelector('.main-title');
 var $recipeLink = document.querySelector('.recipe-link');
+var $newPostLink = document.querySelector('.post-link');
 
 function handleViewSwap(string) {
   for (var i = 0; i < $view.length; i++) {
@@ -416,6 +417,10 @@ $mainTitleLink.addEventListener('click', function () {
 });
 
 $recipeLink.addEventListener('click', function () {
+  handleViewSwap(event.target.getAttribute('data-view'));
+});
+
+$newPostLink.addEventListener('click', function () {
   handleViewSwap(event.target.getAttribute('data-view'));
 });
 
