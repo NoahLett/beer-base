@@ -329,35 +329,71 @@ function renderThumbnails(beer) {
 }
 
 var $recipesRow = document.querySelector('#recipes-row');
-// var $abvOption = document.querySelectorAll('.abv-option');
-// var $filterForm = document.querySelector('.filter-form');
+var $abvOption = document.querySelectorAll('.abv-option');
+var $ibuOption = document.querySelectorAll('.ibu-option');
+var $filterForm = document.querySelector('.filter-form');
 
 for (var i = 0; i < recipesList.length; i++) {
   var result = renderThumbnails(recipesList[i]);
   $recipesRow.appendChild(result);
 }
 
-// $filterForm.addEventListener('input', checkFilters);
+$filterForm.addEventListener('input', checkFilters);
+$filterForm.addEventListener('input', lockFilter);
 
-// function checkFilters(event) {
-//   for (var i = 0; i < $abvOption.length; i++) {
-//     if ($abvOption[i].value !== '') {
-//       $recipesRow.textContent = '';
-//       for (var x = 0; x < recipesList.length; x++) {
-//         if (recipesList[x].abv < Number(event.target.value)) {
-//           var result1 = renderThumbnails(recipesList[x]);
-//           $recipesRow.appendChild(result1);
-//         }
-//       }
-//     } else if (event.target.value === '') {
-//       console.log('true');
-//       for (var y = 0; y < recipesList.length; y++) {
-//         var result2 = renderThumbnails(recipesList[y]);
-//         $recipesRow.appendChild(result2);
-//       }
-//     }
-//   }
-// }
+function checkFilters(event) {
+  if (event.target.closest('select').getAttribute('id') === 'abv-filter') {
+    for (var i = 0; i < $abvOption.length; i++) {
+      if ($abvOption[i].value !== '') {
+        $recipesRow.textContent = '';
+        for (var x = 0; x < recipesList.length; x++) {
+          if (recipesList[x].abv < Number(event.target.value)) {
+            var result1 = renderThumbnails(recipesList[x]);
+            $recipesRow.appendChild(result1);
+          }
+        }
+      } else if (event.target.value === '') {
+        $recipesRow.textContent = '';
+        for (var y = 0; y < recipesList.length; y++) {
+          var result2 = renderThumbnails(recipesList[y]);
+          $recipesRow.appendChild(result2);
+        }
+        break;
+      }
+    }
+  } else if (event.target.closest('select').getAttribute('id') === 'ibu-filter') {
+    for (var z = 0; z < $ibuOption.length; z++) {
+      if ($ibuOption[z].value !== '') {
+        $recipesRow.textContent = '';
+        for (var a = 0; a < recipesList.length; a++) {
+          if (recipesList[a].ibu < Number(event.target.value)) {
+            var result3 = renderThumbnails(recipesList[a]);
+            $recipesRow.appendChild(result3);
+          }
+        }
+      } else if (event.target.value === '') {
+        $recipesRow.textContent = '';
+        for (var b = 0; b < recipesList.length; b++) {
+          var result4 = renderThumbnails(recipesList[b]);
+          $recipesRow.appendChild(result4);
+        }
+        break;
+      }
+    }
+  }
+}
+
+function lockFilter(event) {
+  if (event.target.closest('select').getAttribute('id') === 'abv-filter' && event.target.value !== '') {
+    document.forms[0].elements['ibu-filter'].setAttribute('disabled', 'disabled');
+  } else if (event.target.closest('select').getAttribute('id') === 'abv-filter' && event.target.value === '') {
+    document.forms[0].elements['ibu-filter'].removeAttribute('disabled', 'disabled');
+  } else if (event.target.closest('select').getAttribute('id') === 'ibu-filter' && event.target.value !== '') {
+    document.forms[0].elements['abv-filter'].setAttribute('disabled', 'disabled');
+  } else if (event.target.closest('select').getAttribute('id') === 'ibu-filter' && event.target.value === '') {
+    document.forms[0].elements['abv-filter'].removeAttribute('disabled', 'disabled');
+  }
+}
 
 // View Swapping Functionality //
 
