@@ -99,6 +99,18 @@ li {
   margin-left: 3rem;
 }
 
+select {
+  width: 8rem;
+  margin-top: 0.5rem;
+  border-radius: 5px;
+  border: 2px solid gray;
+}
+
+.filters-label {
+  font-family: Roboto, sans-serif;
+  font-weight: bold;
+}
+
 .span-box {
   display: flex;
   width: 100%;
@@ -218,7 +230,7 @@ li {
     margin-left: auto;
     margin-right: auto;
     width: 90%;
-    height: 2730px;
+    height: 100%;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 15px black;

@@ -82,8 +82,28 @@
             <div class="column-half">
               <h1 class="recipes-text">Recipes</h1>
             </div>
-            <div class="column-half">
-
+            <div class="column-half right">
+              <form action="" method="get" class="filter-form">
+                <div><label for="filter" class="filters-label">Filters</label></div>
+                <div>
+                  <select name="abv-filter" id="abv-filter">
+                    <option class="abv-option" value="" selected>Filter by ABV</option>
+                    <option class="abv-option" value="5">Less than 5% ABV</option>
+                    <option class="abv-option" value="7">Less than 7% ABV</option>
+                    <option class="abv-option" value="10">Less than 10% ABV</option>
+                    <option class="abv-option" value="12">Less than 12% ABV</option>
+                  </select>
+                </div>
+                <div>
+                  <select name="ibu-filter" id="ibu-filter">
+                    <option class="ibu-option" value="" selected>Filter by IBU</option>
+                    <option class="ibu-option" value="30">Less than 30 IBU</option>
+                    <option class="ibu-option" value="50">Less than 50 IBU</option>
+                    <option class="ibu-option" value="70">Less than 70 IBU</option>
+                    <option class="ibu-option" value="90">Less than 90 IBU</option>
+                  </select>
+                </div>
+              </form>
             </div>
           </div>
           <div class="row" id="recipes-row"></div>

@@ -84,6 +84,11 @@
   padding-left: 3rem;
 }
 
+.filter-form {
+  margin-left: 1rem;
+  margin-bottom: 2rem;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     max-width: 1000px;
@@ -135,6 +140,13 @@
     display: flex;
     justify-content: right;
     align-items: flex-end;
+  }
+
+  .right {
+    display: flex;
+    justify-content: right;
+    padding-top: 2rem;
+    padding-right: 2rem;
   }
 
   .a-tag {
