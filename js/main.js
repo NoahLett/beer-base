@@ -528,29 +528,28 @@ function handleFileInput(event) {
     var objectURL = window.URL.createObjectURL(fileObject);
     $newPostImage.setAttribute('src', objectURL);
   } else {
-    $newPostImage.setAttribute('src', 'images/placeholder-image-square.jpg');
+    $newPostImage.setAttribute('src', 'images/placeholder-image.jpg');
   }
 }
 
 // Submit Post Function //
 
-// var $postForm = document.querySelector('.new-post-form');
+var $postForm = document.querySelector('.new-post-form');
 
-// $postForm.addEventListener('submit', handleSubmit);
+$postForm.addEventListener('submit', handleSubmit);
 
-// function handleSubmit(event) {
-//   event.preventDefault();
-//   var obj = {};
-//   var $title = document.forms[1].elements.title.value;
-//   var $photoFile = document.forms[1].elements.photoFile.value;
-//   var $comment = document.forms[1].elements.comment.value;
-//   obj.title = $title;
-//   obj.photoFile = $photoFile;
-//   obj.comment = $comment;
-//   obj.postId = data.nextPostId;
-//   document.forms[1].reset();
-//   $newPostImage.setAttribute('src', 'images/placeholder-image-square.jpg');
-//   data.posts.unshift(obj);
-//   data.nextPostId++;
-//   $ul.prepend(renderPost(obj));
-// }
+function handleSubmit(event) {
+  event.preventDefault();
+  var obj = {};
+  var $title = document.forms[1].elements.title.value;
+  var $photoFile = document.forms[1].elements.photoFile.value;
+  var $content = document.forms[1].elements.content.value;
+  obj.title = $title;
+  obj.photoFile = $photoFile;
+  obj.comment = $content;
+  obj.postId = data.nextPostId;
+  document.forms[1].reset();
+  $newPostImage.setAttribute('src', 'images/placeholder-image.jpg');
+  data.posts.unshift(obj);
+  data.nextPostId++;
+}
