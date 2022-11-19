@@ -26,7 +26,7 @@
         <div class="column-half bottom">
           <span class="nav-bar">
             <a href="#" class="recipe-link" data-view="recipes-page">Recipes</a>
-            <a href="#" class="feed-link">Feed</a>
+            <a href="#" class="feed-link" data-view="feed-page">Feed</a>
             <a href="#" class="post-link" data-view="new-post-page">Post</a>
           </span>
         </div>
@@ -34,7 +34,7 @@
     </div>
   </header>
   <main>
-    <div class="view hidden" data-view="home-page">
+    <div class="view" data-view="home-page">
       <div class="container">
         <div class="row">
           <div class="column-full">
@@ -154,7 +154,7 @@
         </div>
       </div>
     </div>
-    <div class="view" data-view="new-post-page">
+    <div class="view hidden" data-view="new-post-page">
       <div class="container">
         <div class="new-post-box">
           <form class="new-post-form">
@@ -205,6 +205,25 @@
             </div>
           </form>
         </div>
+      </div>
+    </div>
+    <div class="view hidden" data-view="feed-page">
+      <div class="container">
+        <div class="row">
+          <div class="column-full">
+            <h2 class="feed-header-text">Posts</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-full">
+            <div class="no-content-box">
+              <p class="no-content-text">Doesn't look like anything's been posted yet...</p>
+            </div>
+          </div>
+        </div>
+        <ul>
+
+        </ul>
       </div>
     </div>
   </main>

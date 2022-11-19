@@ -401,6 +401,7 @@ var $view = document.querySelectorAll('.view');
 var $mainTitleLink = document.querySelector('.main-title');
 var $recipeLink = document.querySelector('.recipe-link');
 var $newPostLink = document.querySelector('.post-link');
+var $feedLink = document.querySelector('.feed-link');
 
 function handleViewSwap(string) {
   for (var i = 0; i < $view.length; i++) {
@@ -421,6 +422,10 @@ $recipeLink.addEventListener('click', function () {
 });
 
 $newPostLink.addEventListener('click', function () {
+  handleViewSwap(event.target.getAttribute('data-view'));
+});
+
+$feedLink.addEventListener('click', function () {
   handleViewSwap(event.target.getAttribute('data-view'));
 });
 

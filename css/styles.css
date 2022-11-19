@@ -278,6 +278,19 @@ input[type="file"]::file-selector-button {
   cursor: pointer;
 }
 
+.feed-header-text {
+  margin-top: 2rem;
+  margin-left: 3rem;
+  font-family: Lobster, sans-serif;
+  font-size: 3rem;
+}
+
+.no-content-text {
+  font-family: Lobster, sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
 @media screen and (max-width: 767px) {
   .carousel-box {
     width: 90%;
