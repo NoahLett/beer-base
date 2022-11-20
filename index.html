@@ -26,8 +26,8 @@
         <div class="column-half bottom">
           <span class="nav-bar">
             <a href="#" class="recipe-link" data-view="recipes-page">Recipes</a>
-            <a href="#" class="feed-link">Feed</a>
-            <a href="#" class="post-link">Post</a>
+            <a href="#" class="feed-link" data-view="feed-page">Feed</a>
+            <a href="#" class="post-link" data-view="new-post-page">Post</a>
           </span>
         </div>
       </div>
@@ -152,6 +152,78 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="view hidden" data-view="new-post-page">
+      <div class="container">
+        <div class="new-post-box">
+          <form class="new-post-form">
+            <div class="row">
+              <div class="column-full form-header-box">
+                <h2 class="form-header-text">New Post</h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="column-half">
+                <img
+                  class="new-post-image"
+                  src="images/placeholder-image.jpg"
+                  alt="placeholder-image">
+              </div>
+              <div class="column-half">
+                <div>
+                  <label class="new-post-label" for="post-title">Title</label>
+                  <input
+                    required
+                    placeholder="Put your title here!"
+                    name="title"
+                    class="post-title"
+                    type="text">
+                </div>
+                <div>
+                  <label class="new-post-label" for="post-content">Content</label>
+                  <textarea
+                    required
+                    placeholder="We're all ears!"
+                    name="content"
+                    class="post-content"></textarea>
+                </div>
+                <div>
+                  <label class="new-post-label" for="post-photo-file">Upload a Photo</label>
+                  <input
+                    required
+                    name="photoFile"
+                    class="post-photo-file"
+                    type="file"
+                    id="photo-file">
+                  <button
+                    class="post-button"
+                    type="submit"
+                    data-view="feed-page">POST</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="view hidden" data-view="feed-page">
+      <div class="container">
+        <div class="row">
+          <div class="column-full">
+            <h2 class="feed-header-text">Posts</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-full">
+            <div class="no-content-box">
+              <p class="no-content-text">Doesn't look like anything's been posted yet...</p>
+            </div>
+          </div>
+        </div>
+        <ul class="form-results">
+
+        </ul>
       </div>
     </div>
   </main>

@@ -184,10 +184,167 @@ select {
   padding-top: 1rem;
 }
 
+.new-post-box {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px black;
+  margin-top: 5rem;
+}
+
+.form-header-text {
+  font-family: Lobster, sans-serif;
+  color: black;
+  font-size: 3rem;
+  margin-left: 3rem;
+  margin-bottom: 4rem;
+}
+
+.new-post-image {
+  width: 300px;
+  height: 300px;
+  border-radius: 5px;
+  object-fit: cover;
+  margin-left: 3rem;
+  margin-bottom: 3rem;
+}
+
+.post-title,
+.post-content,
+.new-post-label {
+  display: block;
+  width: 85%;
+  margin-top: 0.5rem;
+  border-radius: 4px;
+}
+
+.new-post-label {
+  font-size: 1.2rem;
+  font-family: Roboto, sans-serif;
+}
+
+.post-title,
+.post-content {
+  border: 1px solid #b6b6b6;
+  font-family: Roboto, sans-serif;
+  font-size: 1rem;
+}
+
+.post-title {
+  height: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.post-content {
+  height: 7rem;
+  margin-bottom: 1rem;
+}
+
+.post-photo-file {
+  width: 71%;
+  margin-top: 0.75rem;
+  margin-bottom: 3.5rem;
+  font-family: Roboto, sans-serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+input[type="file"]::file-selector-button {
+  border: 2px solid #f44336;
+  border-radius: 5px;
+  color: #f44336;
+  background-color: white;
+  cursor: pointer;
+  height: 2rem;
+  width: 6rem;
+  margin-right: 1rem;
+  font-size: 0.9rem;
+}
+
+.post-content:focus,
+.post-title:focus {
+  outline: 2px solid #f44336;
+}
+
+.post-button {
+  color: white;
+  background-color: #f44336;
+  border-radius: 5px;
+  border: none;
+  height: 2rem;
+  width: 4rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.feed-header-text {
+  margin-top: 2rem;
+  margin-left: 3rem;
+  font-family: Lobster, sans-serif;
+  font-size: 3rem;
+}
+
+.no-content-text {
+  font-family: Lobster, sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.form-results {
+  list-style-type: none;
+}
+
+.post {
+  margin-top: 3rem;
+  background-color: white;
+  box-shadow: 0 4px 15px black;
+  border-radius: 10px;
+  height: 100%;
+  width: 100%;
+}
+
+.picture {
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin: 1rem;
+}
+
+.topic {
+  font-family: Roboto, sans-serif;
+  font-size: 1.5rem;
+  margin-top: 3rem;
+  margin-left: 2rem;
+}
+
+.content {
+  font-family: Roboto, sans-serif;
+  font-size: 1.3rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.pen-box {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.fa-trash-can,
+.fa-pen-to-square {
+  color: #f44336;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-right: 1.5rem;
+}
+
 @media screen and (max-width: 767px) {
   .carousel-box {
     width: 90%;
-    height: 575px;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
   }
@@ -249,5 +406,44 @@ select {
   .description,
   .beer-title {
     margin-left: 2rem;
+  }
+
+  .new-post-box {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    height: 100%;
+  }
+
+  .new-post-label,
+  .post-title,
+  .post-content,
+  .post-photo-file {
+    margin-left: 1.5rem;
+  }
+
+  .post-photo-file {
+    width: 65%;
+  }
+
+  .new-post-image {
+    margin-left: 1.5rem;
+  }
+
+  .form-results {
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0;
+    width: 90%;
+  }
+
+  .picture {
+    margin-left: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .pen-box {
+    align-items: flex-end;
+    margin-bottom: 0.5rem;
   }
 }

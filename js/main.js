@@ -7,6 +7,18 @@ var $carouselText = document.querySelector('.carousel-text');
 var $carouselImage = document.querySelector('.carousel-image');
 var $circle = document.querySelectorAll('.fa-regular');
 var $spanBox = document.querySelector('.span-box');
+var $postForm = document.querySelector('.new-post-form');
+var $view = document.querySelectorAll('.view');
+var $mainTitleLink = document.querySelector('.main-title');
+var $recipeLink = document.querySelector('.recipe-link');
+var $newPostLink = document.querySelector('.post-link');
+var $feedLink = document.querySelector('.feed-link');
+var $noContent = document.querySelector('.no-content-box');
+var $postButton = document.querySelector('.post-button');
+var $postPhotoFile = document.querySelector('input.post-photo-file');
+var $newPostImage = document.querySelector('img.new-post-image');
+var $selectedFile = document.getElementById('photo-file');
+var $formResults = document.querySelector('.form-results');
 
 $leftArrow.addEventListener('click', handleCarouselSwap1);
 $rightArrow.addEventListener('click', handleCarouselSwap2);
@@ -119,7 +131,7 @@ function rotation() {
 
 setInterval(rotation, 5000);
 
-// Recipes "Thumbnail" List Render //
+// Recipes "Thumbnail" List Render and Filter Functionality //
 
 var recipesList = [
   {
@@ -395,30 +407,6 @@ function lockFilter(event) {
   }
 }
 
-// View Swapping Functionality //
-
-var $view = document.querySelectorAll('.view');
-var $mainTitleLink = document.querySelector('.main-title');
-var $recipeLink = document.querySelector('.recipe-link');
-
-function handleViewSwap(string) {
-  for (var i = 0; i < $view.length; i++) {
-    if ($view[i].getAttribute('data-view') === string) {
-      $view[i].className = 'view';
-    } else {
-      $view[i].className = 'view hidden';
-    }
-  }
-}
-
-$mainTitleLink.addEventListener('click', function () {
-  handleViewSwap(event.target.getAttribute('data-view'));
-});
-
-$recipeLink.addEventListener('click', function () {
-  handleViewSwap(event.target.getAttribute('data-view'));
-});
-
 // Public API XMLHttpRequest Function//
 
 var $recipesBox = document.querySelector('.recipes-box');
@@ -508,3 +496,170 @@ function handleRecipeRequest(event) {
     handleViewSwap('recipe-details');
   }
 }
+
+// Image Placeholder Function //
+
+$postPhotoFile.addEventListener('input', handleFileInput);
+
+var objectURL = '';
+
+function handleFileInput(event) {
+  if ($postPhotoFile.value !== '') {
+    var fileObject = $selectedFile.files[0];
+    objectURL = window.URL.createObjectURL(fileObject);
+    $newPostImage.setAttribute('src', objectURL);
+  } else {
+    $newPostImage.setAttribute('src', 'images/placeholder-image.jpg');
+  }
+}
+
+// Submit Post Function //
+
+$postForm.addEventListener('submit', handleSubmit);
+
+function handleSubmit(event) {
+  event.preventDefault();
+  var obj = {};
+  var $title = document.forms[1].elements.title.value;
+  var $photoFile = objectURL;
+  var $content = document.forms[1].elements.content.value;
+  obj.title = $title;
+  obj.photoFile = $photoFile;
+  obj.content = $content;
+  obj.postId = data.nextPostId;
+  document.forms[1].reset();
+  $newPostImage.setAttribute('src', 'images/placeholder-image.jpg');
+  data.posts.unshift(obj);
+  data.nextPostId++;
+  $formResults.prepend(renderPost(obj));
+}
+
+// DOM Tree Post Creation Function //
+
+function renderPost(obj) {
+  var $li = document.createElement('li');
+  $li.setAttribute('data-post-id', obj.postId);
+
+  var $divPost = document.createElement('div');
+  $divPost.setAttribute('class', 'post');
+  $li.appendChild($divPost);
+
+  var $divRow = document.createElement('div');
+  $divRow.setAttribute('class', 'row');
+  $divPost.appendChild($divRow);
+
+  var $divColumnThird = document.createElement('div');
+  $divColumnThird.setAttribute('class', 'column-third');
+  $divRow.appendChild($divColumnThird);
+
+  var $imgPicture = document.createElement('img');
+  $imgPicture.setAttribute('src', obj.photoFile);
+  $imgPicture.setAttribute('class', 'picture');
+  $divColumnThird.appendChild($imgPicture);
+
+  var $divColumnTwoThirds = document.createElement('div');
+  $divColumnTwoThirds.setAttribute('class', 'column-two-thirds');
+  $divRow.appendChild($divColumnTwoThirds);
+
+  var $divTopic = document.createElement('div');
+  $divTopic.setAttribute('class', 'row');
+  $divColumnTwoThirds.appendChild($divTopic);
+
+  var $divTopicThreeFourths = document.createElement('div');
+  $divTopicThreeFourths.setAttribute('class', 'column-three-fourths');
+  $divTopic.appendChild($divTopicThreeFourths);
+
+  var $h2Topic = document.createElement('h2');
+  $h2Topic.setAttribute('class', 'topic');
+  $h2Topic.textContent = obj.title;
+  $divTopicThreeFourths.appendChild($h2Topic);
+
+  var $divTopicOneFourth = document.createElement('div');
+  $divTopicOneFourth.setAttribute('class', 'column-one-fourth pen-box');
+  $divTopic.appendChild($divTopicOneFourth);
+
+  var $iPen = document.createElement('i');
+  $iPen.setAttribute('class', 'fa-solid fa-pen-to-square');
+  $iPen.setAttribute('data-view', 'new-post-page');
+  $iPen.setAttribute('data-post-id', obj.postId);
+  $divTopicOneFourth.appendChild($iPen);
+
+  var $iTrash = document.createElement('i');
+  $iTrash.setAttribute('class', 'fa-regular fa-trash-can');
+  $iTrash.setAttribute('data-post-id', obj.postId);
+  $divTopicOneFourth.appendChild($iTrash);
+
+  var $divContent1 = document.createElement('div');
+  $divColumnTwoThirds.appendChild($divContent1);
+
+  var $pContent1 = document.createElement('p');
+  $pContent1.setAttribute('class', 'content');
+  $pContent1.textContent = obj.content;
+  $divContent1.appendChild($pContent1);
+
+  return $li;
+}
+
+function createPosts(event) {
+  for (var i = 0; i < data.posts.length; i++) {
+    var result = renderPost(data.posts[i]);
+    $formResults.prepend(result);
+  }
+}
+
+// View Swapping Functionality //
+
+$postForm.addEventListener('submit', handleContentSwap);
+
+function handleViewSwap(string) {
+  data.view = string;
+  for (var i = 0; i < $view.length; i++) {
+    if ($view[i].getAttribute('data-view') === string) {
+      $view[i].className = 'view';
+    } else {
+      $view[i].className = 'view hidden';
+    }
+  }
+}
+
+function handleContentSwap(event) {
+  if (data.posts.length === 0) {
+    $noContent.className = 'no-content-box';
+  } else {
+    $noContent.className = 'no-content-box hidden';
+  }
+}
+
+function handleFormClear(event) {
+  data.view = 'new-post-page';
+  $postForm.reset();
+  window.location.reload(false);
+}
+
+$mainTitleLink.addEventListener('click', function () {
+  handleViewSwap(event.target.getAttribute('data-view'));
+});
+
+$recipeLink.addEventListener('click', function () {
+  handleViewSwap(event.target.getAttribute('data-view'));
+});
+
+$newPostLink.addEventListener('click', handleFormClear);
+
+$newPostLink.addEventListener('click', function () {
+  handleViewSwap(event.target.getAttribute('data-view'));
+});
+
+$feedLink.addEventListener('click', function () {
+  handleViewSwap(event.target.getAttribute('data-view'));
+});
+
+$postButton.addEventListener('click', function (event) {
+  handleViewSwap(event.target.getAttribute('data-view'));
+});
+
+window.addEventListener('DOMContentLoaded', function (event) {
+  createPosts();
+  handleContentSwap();
+  handleViewSwap(data.view);
+});
