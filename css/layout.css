@@ -104,7 +104,11 @@
   }
 
   .column-third {
-    width: calc(100% / 3);
+    width: 33%;
+  }
+
+  .column-two-thirds {
+    width: 66%;
   }
 
   .column-sixth {

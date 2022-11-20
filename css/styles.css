@@ -201,7 +201,6 @@ select {
   margin-bottom: 4rem;
 }
 
-.picture,
 .new-post-image {
   width: 300px;
   height: 300px;
@@ -292,6 +291,10 @@ input[type="file"]::file-selector-button {
   text-align: center;
 }
 
+.form-results {
+  list-style-type: none;
+}
+
 .post {
   margin-top: 3rem;
   background-color: white;
@@ -301,16 +304,26 @@ input[type="file"]::file-selector-button {
   width: 100%;
 }
 
+.picture {
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin: 1rem;
+}
+
 .topic {
   font-family: Roboto, sans-serif;
   font-size: 1.5rem;
-  margin-top: 1rem;
-  margin-left: 0.25rem;
+  margin-top: 3rem;
+  margin-left: 2rem;
 }
 
 .content {
   font-family: Roboto, sans-serif;
   font-size: 1.3rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 .pen-box {
@@ -325,6 +338,7 @@ input[type="file"]::file-selector-button {
   margin-bottom: 1rem;
   font-size: 1.5rem;
   cursor: pointer;
+  margin-right: 1.5rem;
 }
 
 @media screen and (max-width: 767px) {
@@ -414,5 +428,22 @@ input[type="file"]::file-selector-button {
 
   .new-post-image {
     margin-left: 1.5rem;
+  }
+
+  .form-results {
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0;
+    width: 90%;
+  }
+
+  .picture {
+    margin-left: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .pen-box {
+    align-items: flex-end;
+    margin-bottom: 0.5rem;
   }
 }

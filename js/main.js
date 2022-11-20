@@ -407,63 +407,6 @@ function lockFilter(event) {
   }
 }
 
-// View Swapping Functionality //
-
-function handleViewSwap(string) {
-  data.view = string;
-  for (var i = 0; i < $view.length; i++) {
-    if ($view[i].getAttribute('data-view') === string) {
-      $view[i].className = 'view';
-    } else {
-      $view[i].className = 'view hidden';
-    }
-  }
-}
-
-function handleContentSwap(event) {
-  if (data.posts.length === 0) {
-    $noContent.className = 'no-content-box';
-  } else {
-    $noContent.className = 'no-content-box hidden';
-  }
-}
-
-function handleFormClear(event) {
-  data.view = 'new-post-page';
-  $postForm.reset();
-  window.location.reload(false);
-}
-
-$mainTitleLink.addEventListener('click', function () {
-  handleViewSwap(event.target.getAttribute('data-view'));
-});
-
-$recipeLink.addEventListener('click', function () {
-  handleViewSwap(event.target.getAttribute('data-view'));
-});
-
-$newPostLink.addEventListener('click', handleFormClear);
-
-$newPostLink.addEventListener('click', function () {
-  handleViewSwap(event.target.getAttribute('data-view'));
-});
-
-$feedLink.addEventListener('click', function () {
-  handleViewSwap(event.target.getAttribute('data-view'));
-});
-
-$postForm.addEventListener('submit', handleContentSwap);
-
-$postButton.addEventListener('click', function (event) {
-  handleViewSwap(event.target.getAttribute('data-view'));
-});
-
-window.addEventListener('DOMContentLoaded', function (event) {
-  createPosts();
-  handleViewSwap(data.view);
-  handleContentSwap();
-});
-
 // Public API XMLHttpRequest Function//
 
 var $recipesBox = document.querySelector('.recipes-box');
@@ -605,22 +548,22 @@ function renderPost(obj) {
   $divRow.setAttribute('class', 'row');
   $divPost.appendChild($divRow);
 
-  var $divColumnHalf1 = document.createElement('div');
-  $divColumnHalf1.setAttribute('class', 'column-half');
-  $divRow.appendChild($divColumnHalf1);
+  var $divColumnThird = document.createElement('div');
+  $divColumnThird.setAttribute('class', 'column-third');
+  $divRow.appendChild($divColumnThird);
 
   var $imgPicture = document.createElement('img');
   $imgPicture.setAttribute('src', obj.photoFile);
   $imgPicture.setAttribute('class', 'picture');
-  $divColumnHalf1.appendChild($imgPicture);
+  $divColumnThird.appendChild($imgPicture);
 
-  var $divColumnHalf2 = document.createElement('div');
-  $divColumnHalf2.setAttribute('class', 'column-half');
-  $divRow.appendChild($divColumnHalf2);
+  var $divColumnTwoThirds = document.createElement('div');
+  $divColumnTwoThirds.setAttribute('class', 'column-two-thirds');
+  $divRow.appendChild($divColumnTwoThirds);
 
   var $divTopic = document.createElement('div');
   $divTopic.setAttribute('class', 'row');
-  $divColumnHalf2.appendChild($divTopic);
+  $divColumnTwoThirds.appendChild($divTopic);
 
   var $divTopicThreeFourths = document.createElement('div');
   $divTopicThreeFourths.setAttribute('class', 'column-three-fourths');
@@ -647,7 +590,7 @@ function renderPost(obj) {
   $divTopicOneFourth.appendChild($iTrash);
 
   var $divContent1 = document.createElement('div');
-  $divColumnHalf2.appendChild($divContent1);
+  $divColumnTwoThirds.appendChild($divContent1);
 
   var $pContent1 = document.createElement('p');
   $pContent1.setAttribute('class', 'content');
@@ -663,3 +606,60 @@ function createPosts(event) {
     $formResults.prepend(result);
   }
 }
+
+// View Swapping Functionality //
+
+$postForm.addEventListener('submit', handleContentSwap);
+
+function handleViewSwap(string) {
+  data.view = string;
+  for (var i = 0; i < $view.length; i++) {
+    if ($view[i].getAttribute('data-view') === string) {
+      $view[i].className = 'view';
+    } else {
+      $view[i].className = 'view hidden';
+    }
+  }
+}
+
+function handleContentSwap(event) {
+  if (data.posts.length === 0) {
+    $noContent.className = 'no-content-box';
+  } else {
+    $noContent.className = 'no-content-box hidden';
+  }
+}
+
+function handleFormClear(event) {
+  data.view = 'new-post-page';
+  $postForm.reset();
+  window.location.reload(false);
+}
+
+$mainTitleLink.addEventListener('click', function () {
+  handleViewSwap(event.target.getAttribute('data-view'));
+});
+
+$recipeLink.addEventListener('click', function () {
+  handleViewSwap(event.target.getAttribute('data-view'));
+});
+
+$newPostLink.addEventListener('click', handleFormClear);
+
+$newPostLink.addEventListener('click', function () {
+  handleViewSwap(event.target.getAttribute('data-view'));
+});
+
+$feedLink.addEventListener('click', function () {
+  handleViewSwap(event.target.getAttribute('data-view'));
+});
+
+$postButton.addEventListener('click', function (event) {
+  handleViewSwap(event.target.getAttribute('data-view'));
+});
+
+window.addEventListener('DOMContentLoaded', function (event) {
+  createPosts();
+  handleContentSwap();
+  handleViewSwap(data.view);
+});
