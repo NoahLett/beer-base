@@ -201,6 +201,7 @@ select {
   margin-bottom: 4rem;
 }
 
+.picture,
 .new-post-image {
   width: 300px;
   height: 300px;
@@ -289,6 +290,41 @@ input[type="file"]::file-selector-button {
   font-family: Lobster, sans-serif;
   font-size: 1.5rem;
   text-align: center;
+}
+
+.post {
+  margin-top: 3rem;
+  background-color: white;
+  box-shadow: 0 4px 15px black;
+  border-radius: 10px;
+  height: 100%;
+  width: 100%;
+}
+
+.topic {
+  font-family: Roboto, sans-serif;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  margin-left: 0.25rem;
+}
+
+.content {
+  font-family: Roboto, sans-serif;
+  font-size: 1.3rem;
+}
+
+.pen-box {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.fa-trash-can,
+.fa-pen-to-square {
+  color: #f44336;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 767px) {
