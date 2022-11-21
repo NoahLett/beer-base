@@ -19,6 +19,13 @@ var $postPhotoFile = document.querySelector('input.post-photo-file');
 var $newPostImage = document.querySelector('img.new-post-image');
 var $selectedFile = document.getElementById('photo-file');
 var $formResults = document.querySelector('.form-results');
+var $formHeaderText = document.querySelector('.form-header-text');
+var $postLi = $formResults.getElementsByTagName('li');
+var $postTitle = document.querySelector('.post-title');
+var $postContent = document.querySelector('.post-content');
+var $overlay = document.querySelector('.overlay');
+var $cancel = document.querySelector('.cancel');
+var $confirm = document.querySelector('.confirm');
 
 $leftArrow.addEventListener('click', handleCarouselSwap1);
 $rightArrow.addEventListener('click', handleCarouselSwap2);
@@ -523,15 +530,36 @@ function handleSubmit(event) {
   var $title = document.forms[1].elements.title.value;
   var $photoFile = objectURL;
   var $content = document.forms[1].elements.content.value;
-  obj.title = $title;
-  obj.photoFile = $photoFile;
-  obj.content = $content;
-  obj.postId = data.nextPostId;
-  document.forms[1].reset();
-  $newPostImage.setAttribute('src', 'images/placeholder-image.jpg');
-  data.posts.unshift(obj);
-  data.nextPostId++;
-  $formResults.prepend(renderPost(obj));
+  if ($formHeaderText.textContent === 'New Post') {
+    obj.title = $title;
+    obj.photoFile = $photoFile;
+    obj.content = $content;
+    obj.postId = data.nextPostId;
+    document.forms[1].reset();
+    $newPostImage.setAttribute('src', 'images/placeholder-image.jpg');
+    data.posts.unshift(obj);
+    data.nextPostId++;
+    $formResults.prepend(renderPost(obj));
+  } else if ($formHeaderText.textContent === 'Edit Post') {
+    obj.title = $title;
+    obj.photoFile = $photoFile;
+    obj.content = $content;
+    obj.postId = data.editing.postId;
+    document.forms[1].reset();
+    $newPostImage.setAttribute('src', 'images/placeholder-image.jpg');
+    for (var i = 0; i < data.posts.length; i++) {
+      if (data.posts[i].postId === obj.postId) {
+        data.posts.splice([i], 1, obj);
+      }
+    }
+    for (var x = 0; x < $postLi.length; x++) {
+      var string = $postLi[x].getAttribute('data-post-id');
+      var toNumber = Number(string);
+      if (toNumber === obj.postId) {
+        $postLi[x].replaceWith(renderPost(obj));
+      }
+    }
+  }
 }
 
 // DOM Tree Post Creation Function //
@@ -539,6 +567,7 @@ function handleSubmit(event) {
 function renderPost(obj) {
   var $li = document.createElement('li');
   $li.setAttribute('data-post-id', obj.postId);
+  $li.setAttribute('class', 'post-li');
 
   var $divPost = document.createElement('div');
   $divPost.setAttribute('class', 'post');
@@ -663,3 +692,81 @@ window.addEventListener('DOMContentLoaded', function (event) {
   handleContentSwap();
   handleViewSwap(data.view);
 });
+
+$formResults.addEventListener('click', handleEditorSwap);
+
+function handleEditorSwap(event) {
+  data.view = 'new-post-page';
+  if (event.target.matches('i.fa-solid')) {
+    for (var x = 0; x < $view.length; x++) {
+      if ($view[x].getAttribute('data-view') === 'new-post-page') {
+        $view[x].className = 'view';
+        $formHeaderText.textContent = 'Edit Post';
+      } else {
+        $view[x].className = 'view hidden';
+      }
+    }
+  }
+}
+
+// Post Editing Functionality //
+
+$formResults.addEventListener('click', assignEdit);
+
+function assignEdit(event) {
+  if (event.target.matches('i.fa-solid')) {
+    for (var i = 0; i < data.posts.length; i++) {
+      var string = event.target.getAttribute('data-post-id');
+      var toNumber = Number(string);
+      if (data.posts[i].postId === toNumber) {
+        data.editing = data.posts[i];
+      }
+    }
+    $postTitle.setAttribute('value', data.editing.title);
+    $postContent.textContent = data.editing.content;
+  }
+}
+
+// Delete Post Functionality //
+
+$formResults.addEventListener('click', handleOpenModal);
+$cancel.addEventListener('click', handleCancel);
+$confirm.addEventListener('click', handleDelete);
+
+function handleOpenModal(event) {
+  if (event.target.matches('i.fa-regular')) {
+    for (var i = 0; i < data.posts.length; i++) {
+      var string = event.target.getAttribute('data-post-id');
+      var toNumber = Number(string);
+      if (data.posts[i].postId === toNumber) {
+        data.editing = data.posts[i];
+      }
+      $overlay.className = 'overlay';
+    }
+  }
+}
+
+function handleCancel(event) {
+  if (event.target.matches('.cancel')) {
+    $overlay.className = 'overlay hidden';
+  }
+}
+
+function handleDelete(event) {
+  if (event.target.matches('.confirm')) {
+    for (var i = 0; i < data.posts.length; i++) {
+      if (data.posts[i].postId === data.editing.postId) {
+        data.posts.splice([i], 1);
+      }
+    }
+    for (var x = 0; x < $postLi.length; x++) {
+      var string = $postLi[x].getAttribute('data-post-id');
+      var toNumber = Number(string);
+      if (toNumber === data.editing.postId) {
+        $postLi[x].remove();
+      }
+    }
+  }
+  $overlay.className = 'overlay hidden';
+  handleContentSwap();
+}
