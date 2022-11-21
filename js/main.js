@@ -23,6 +23,8 @@ var $formHeaderText = document.querySelector('.form-header-text');
 var $postLi = $formResults.getElementsByTagName('li');
 var $postTitle = document.querySelector('.post-title');
 var $postContent = document.querySelector('.post-content');
+// var $overlay = document.querySelector('#overlay');
+// var $modal = document.querySelector('.modal-box');
 
 $leftArrow.addEventListener('click', handleCarouselSwap1);
 $rightArrow.addEventListener('click', handleCarouselSwap2);
@@ -612,6 +614,7 @@ function renderPost(obj) {
 
   var $iTrash = document.createElement('i');
   $iTrash.setAttribute('class', 'fa-regular fa-trash-can');
+  $iTrash.setAttribute('data-view', 'modal');
   $iTrash.setAttribute('data-post-id', obj.postId);
   $divTopicOneFourth.appendChild($iTrash);
 
@@ -724,3 +727,9 @@ function assignEdit(event) {
     $postContent.textContent = data.editing.content;
   }
 }
+
+// Delete Post Functionality //
+
+$formResults.addEventListener('click', function () {
+  handleViewSwap(event.target.getAttribute('data-view'));
+});
