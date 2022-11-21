@@ -723,7 +723,6 @@ function assignEdit(event) {
       }
     }
     $postTitle.setAttribute('value', data.editing.title);
-    // $newPostImage.setAttribute('src', data.editing.photoFile);
     $postContent.textContent = data.editing.content;
   }
 }
