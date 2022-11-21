@@ -23,8 +23,8 @@ var $formHeaderText = document.querySelector('.form-header-text');
 var $postLi = $formResults.getElementsByTagName('li');
 var $postTitle = document.querySelector('.post-title');
 var $postContent = document.querySelector('.post-content');
-// var $overlay = document.querySelector('#overlay');
-// var $modal = document.querySelector('.modal-box');
+var $overlay = document.querySelector('.overlay');
+var $cancel = document.querySelector('.cancel');
 
 $leftArrow.addEventListener('click', handleCarouselSwap1);
 $rightArrow.addEventListener('click', handleCarouselSwap2);
@@ -614,7 +614,6 @@ function renderPost(obj) {
 
   var $iTrash = document.createElement('i');
   $iTrash.setAttribute('class', 'fa-regular fa-trash-can');
-  $iTrash.setAttribute('data-view', 'modal');
   $iTrash.setAttribute('data-post-id', obj.postId);
   $divTopicOneFourth.appendChild($iTrash);
 
@@ -730,6 +729,17 @@ function assignEdit(event) {
 
 // Delete Post Functionality //
 
-$formResults.addEventListener('click', function () {
-  handleViewSwap(event.target.getAttribute('data-view'));
-});
+$formResults.addEventListener('click', handleOpenModal);
+$cancel.addEventListener('click', handleCancel);
+
+function handleOpenModal(event) {
+  if (event.target.matches('i.fa-regular')) {
+    $overlay.className = 'overlay';
+  }
+}
+
+function handleCancel(event) {
+  if (event.target.matches('.cancel')) {
+    $overlay.className = 'overlay hidden';
+  }
+}

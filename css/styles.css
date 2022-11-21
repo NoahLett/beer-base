@@ -341,10 +341,8 @@ input[type="file"]::file-selector-button {
   margin-right: 1.5rem;
 }
 
-#overlay {
+.overlay {
   position: absolute;
-  display: flex;
-  align-items: center;
   top: 0;
   left: 0;
   right: 0;
@@ -362,6 +360,27 @@ input[type="file"]::file-selector-button {
   border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+  top: 40%;
+}
+
+.button-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.question {
+  text-align: center;
+  font-family: Roboto, sans-serif;
+  font-size: 1.5rem;
+}
+
+.cancel {
+  margin-left: 1rem;
+}
+
+.confirm {
+  margin-right: 1rem;
 }
 
 @media screen and (max-width: 767px) {
