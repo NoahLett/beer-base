@@ -25,6 +25,7 @@ var $postTitle = document.querySelector('.post-title');
 var $postContent = document.querySelector('.post-content');
 var $overlay = document.querySelector('.overlay');
 var $cancel = document.querySelector('.cancel');
+var $confirm = document.querySelector('.confirm');
 
 $leftArrow.addEventListener('click', handleCarouselSwap1);
 $rightArrow.addEventListener('click', handleCarouselSwap2);
@@ -722,7 +723,7 @@ function assignEdit(event) {
       }
     }
     $postTitle.setAttribute('value', data.editing.title);
-    $newPostImage.setAttribute('src', data.editing.photoFile);
+    // $newPostImage.setAttribute('src', data.editing.photoFile);
     $postContent.textContent = data.editing.content;
   }
 }
@@ -731,10 +732,18 @@ function assignEdit(event) {
 
 $formResults.addEventListener('click', handleOpenModal);
 $cancel.addEventListener('click', handleCancel);
+$confirm.addEventListener('click', handleDelete);
 
 function handleOpenModal(event) {
   if (event.target.matches('i.fa-regular')) {
-    $overlay.className = 'overlay';
+    for (var i = 0; i < data.posts.length; i++) {
+      var string = event.target.getAttribute('data-post-id');
+      var toNumber = Number(string);
+      if (data.posts[i].postId === toNumber) {
+        data.editing = data.posts[i];
+      }
+      $overlay.className = 'overlay';
+    }
   }
 }
 
@@ -742,4 +751,23 @@ function handleCancel(event) {
   if (event.target.matches('.cancel')) {
     $overlay.className = 'overlay hidden';
   }
+}
+
+function handleDelete(event) {
+  if (event.target.matches('.confirm')) {
+    for (var i = 0; i < data.posts.length; i++) {
+      if (data.posts[i].postId === data.editing.postId) {
+        data.posts.splice([i], 1);
+      }
+    }
+    for (var x = 0; x < $postLi.length; x++) {
+      var string = $postLi[x].getAttribute('data-post-id');
+      var toNumber = Number(string);
+      if (toNumber === data.editing.postId) {
+        $postLi[x].remove();
+      }
+    }
+  }
+  $overlay.className = 'overlay hidden';
+  handleContentSwap();
 }
