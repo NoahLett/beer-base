@@ -22,6 +22,11 @@ As a beer-enjoyer and occassional homebrewer, I wanted to create an application 
 - Users can edit posts they've made
 - Users can delete posts they've made
 
+## Preview
+
+![SGT React](assets/recipe-ajax-request.gif)
+![SGT React](assets/filtering-functionality.gif)
+
 ## Reach Feature
 
 - Add filtering functionality for the beer recipes thumbnail list
