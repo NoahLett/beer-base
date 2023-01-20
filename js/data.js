@@ -2,7 +2,7 @@
 /* exported recipesList */
 
 var data = {
-  view: 'new-post-page',
+  view: 'home-page',
   posts: [],
   editing: null,
   nextPostId: 1
