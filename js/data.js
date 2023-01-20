@@ -9,6 +9,7 @@ var data = {
 };
 
 window.addEventListener('beforeunload', handleBeforeUnload);
+window.addEventListener('pagehide', handleBeforeUnload);
 
 var previousDataJSON = localStorage.getItem('javascript-local-storage-Brew-Base');
 
