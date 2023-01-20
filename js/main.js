@@ -138,7 +138,7 @@ function rotation() {
   handleCarouselSwap2();
 }
 
-setInterval(rotation, 5000);
+setInterval(rotation, 7000);
 
 // Recipes "Thumbnail" List Render and Filter Functionality //
 
