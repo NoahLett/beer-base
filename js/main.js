@@ -33,7 +33,7 @@ $leftArrow.addEventListener('click', handleCarouselSwap1);
 $rightArrow.addEventListener('click', handleCarouselSwap2);
 $spanBox.addEventListener('click', handleCarouselSwap3);
 
-var carouselTextArray = ['We believe the fun of brewing your own beer at home should be an open-resource experience. Welcome to a hub all about recipes, techniques, tips, and pride in one\'s work.We\'re glad you\'re here!',
+var carouselTextArray = ['We believe the fun of brewing your own beer at home should be an open-resource experience. Welcome to a hub all about recipes, techniques, tips, and pride in one\'s work. We\'re glad you\'re here!',
   'What fun would it be if you couldn’t share your batch turnouts and suggestions with others? Here, we encourage all brewers to share the goodness of what’s bubbling in their fermenters (digitally, of course)!',
   'While the recipes offered here are absolutely fantastic, we’re always in the market for new ones too! Feel free to post recipes you think others will enjoy. We’ll take a look at your post and add it to the Recipes page!'];
 

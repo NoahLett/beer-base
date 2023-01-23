@@ -4,7 +4,7 @@ A dynamic HTML, CSS, and JavaScript application for homebrewers looking to try n
 
 ## Why I Built This
 
-As a beer-enjoyer and occassional homebrewer, I wanted to create an application that allows for easy access to beer brewing recipes and an environment for individual to post the batches their proud of.
+As a beer-enjoyer and occassional homebrewer, I wanted to create an application that allows for easy access to beer brewing recipes and an environment for individuals to post the batches they're proud of.
 
 ## Technologies Used
 
