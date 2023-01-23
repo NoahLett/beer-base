@@ -37,4 +37,6 @@ As a beer-enjoyer and occassional homebrewer, I wanted to create an application 
 2. Open index.html in your LiveReload Server
 3. Explore the app!
 
+## Live Deployment
+
 https://noahlett.github.io/beer-base/
